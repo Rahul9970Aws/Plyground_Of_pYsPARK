@@ -47,3 +47,6 @@ Here’s a typical structure for your **Fact_Claim** table:
 - Fact tables are **normalized**, contain **foreign keys**, and mostly have **metrics** and **timestamps**.
 - Consider implementing **SCD Type 2** in dimension tables like Customer or Policy if historical changes need tracking.
 
+
+![image](https://github.com/user-attachments/assets/3f839d71-1c3c-4f55-bfa0-115f1a9028e9)
+
