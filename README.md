@@ -1,5 +1,5 @@
 
-Great question! In your insurance ETL pipeline, once you've ingested the files (CSV, JSON, XML, TXT) and loaded them to your **Bronze layer**, the **next step** involves **data modeling** — especially for analytical/reporting use cases. Here's how to think about **dimension vs fact** tables.
+ In your insurance ETL pipeline, once you've ingested the files (CSV, JSON, XML, TXT) and loaded them to your **Bronze layer**, the **next step** involves **data modeling** — especially for analytical/reporting use cases. Here's how to think about **dimension vs fact** tables.
 
 ---
 
@@ -47,6 +47,3 @@ Here’s a typical structure for your **Fact_Claim** table:
 - Fact tables are **normalized**, contain **foreign keys**, and mostly have **metrics** and **timestamps**.
 - Consider implementing **SCD Type 2** in dimension tables like Customer or Policy if historical changes need tracking.
 
----
-
-Would you like me to generate sample dimension and fact tables in CSV or JSON format for testing your ETL flow?
