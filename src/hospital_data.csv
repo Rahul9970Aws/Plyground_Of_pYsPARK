@@ -1,0 +1,101 @@
+hospital_id,hospital_name,location,accreditation
+H001,Martin-Lopez Hospital,North Christian,ISO Certified
+H002,Foster Group Hospital,East Christinaport,NABH
+H003,"Williams, Harris and Tucker Hospital",New Emilystad,Joint Commission
+H004,Wade LLC Hospital,New Bonnie,ISO Certified
+H005,Howard Group Hospital,West Keith,ISO Certified
+H006,Ingram Inc Hospital,Savagefort,NABH
+H007,Burns PLC Hospital,Stoneburgh,NABH
+H008,Hays PLC Hospital,Joneschester,ISO Certified
+H009,"Humphrey, Flores and Oconnor Hospital",New Katrinamouth,NABH
+H010,Harvey-Reeves Hospital,Williamsview,ISO Certified
+H011,Medina-Richard Hospital,Nobleshire,NABH
+H012,Douglas Group Hospital,South Kellymouth,Joint Commission
+H013,"Spencer, Mayer and Harvey Hospital",Jasonchester,NABH
+H014,Bell-Brewer Hospital,Onealland,NABH
+H015,Holland-Clark Hospital,Lake Alicia,ISO Certified
+H016,"Miller, Blair and Salas Hospital",Drakefort,ISO Certified
+H017,White-Petersen Hospital,Bellchester,NABH
+H018,Miles Inc Hospital,East Rodneyland,NABH
+H019,Schmitt Group Hospital,North Joseph,ISO Certified
+H020,Thompson PLC Hospital,North Andrewberg,Joint Commission
+H021,Gill-Krause Hospital,East Danielle,NABH
+H022,"Barrett, Brown and Cole Hospital",Edwardland,NABH
+H023,Golden PLC Hospital,North Danafurt,Joint Commission
+H024,Mueller-Snyder Hospital,New Edwardstad,ISO Certified
+H025,"Flores, Boyd and Douglas Hospital",Port Amanda,NABH
+H026,"Wiley, Oliver and Lewis Hospital",Alexandraburgh,Joint Commission
+H027,Gomez Inc Hospital,Robertchester,ISO Certified
+H028,"King, Hernandez and Watson Hospital",Martinezburgh,Joint Commission
+H029,Ortiz PLC Hospital,New Josephshire,Joint Commission
+H030,"Hurley, Young and Smith Hospital",North Jesusmouth,NABH
+H031,Mccoy Ltd Hospital,West Jonathanton,NABH
+H032,Henderson LLC Hospital,Rachelshire,NABH
+H033,"Daugherty, Becker and Rodriguez Hospital",New David,Joint Commission
+H034,Mccall-Adams Hospital,Brianchester,ISO Certified
+H035,David-Lloyd Hospital,Mindytown,Joint Commission
+H036,Burns and Sons Hospital,North Roger,ISO Certified
+H037,"Guerrero, Martin and Walsh Hospital",Port Angela,Joint Commission
+H038,Huber-Mason Hospital,Brownstad,ISO Certified
+H039,Murray PLC Hospital,South William,ISO Certified
+H040,Faulkner-Shannon Hospital,Theresamouth,ISO Certified
+H041,Higgins-Terry Hospital,Port Pennyville,NABH
+H042,Price-Brooks Hospital,Port Pamela,Joint Commission
+H043,Mckay-Mann Hospital,Jenniferborough,NABH
+H044,Jones Group Hospital,East James,Joint Commission
+H045,Morton-Blanchard Hospital,Port Daleside,Joint Commission
+H046,"Williams, Hernandez and Howard Hospital",Morganport,ISO Certified
+H047,Patterson-Jackson Hospital,Byrdmouth,Joint Commission
+H048,Ortiz Ltd Hospital,Logantown,NABH
+H049,"Thomas, Howard and Ortega Hospital",Lake Samanthastad,ISO Certified
+H050,"Williams, Hale and Salas Hospital",North Spencer,ISO Certified
+H051,Young and Sons Hospital,Lake Tabitha,NABH
+H052,"Gonzalez, Watson and Phillips Hospital",Melissatown,ISO Certified
+H053,Williamson-Cooper Hospital,Millerchester,Joint Commission
+H054,"Woodard, Thomas and Bryant Hospital",Alexandertown,Joint Commission
+H055,Owens Ltd Hospital,East Aliciaville,ISO Certified
+H056,Garcia-Anderson Hospital,Andrewsport,NABH
+H057,"Hughes, Kane and Schmidt Hospital",East Brooke,Joint Commission
+H058,Terrell-Chavez Hospital,New Katiehaven,Joint Commission
+H059,Gilmore-Price Hospital,Morganside,NABH
+H060,"Schultz, Wolf and Johnston Hospital",South Toddfort,NABH
+H061,Coleman-Hines Hospital,North Jessicamouth,ISO Certified
+H062,Tucker-Obrien Hospital,New Courtneyborough,NABH
+H063,"Osborne, Humphrey and Holt Hospital",Amandaburgh,NABH
+H064,Harrell-Dean Hospital,Lake Jonathanborough,Joint Commission
+H065,Jensen LLC Hospital,Hernandezchester,NABH
+H066,"Burns, Garcia and Henderson Hospital",Rachaelfurt,NABH
+H067,Meyers-Malone Hospital,Adrianmouth,ISO Certified
+H068,Lewis-Stewart Hospital,Valenciachester,ISO Certified
+H069,Willis and Sons Hospital,Florestown,NABH
+H070,Reid Inc Hospital,West Sarah,Joint Commission
+H071,Moore PLC Hospital,Walshport,NABH
+H072,Allen PLC Hospital,Smithberg,ISO Certified
+H073,Davidson-Jones Hospital,Meganview,Joint Commission
+H074,Robertson PLC Hospital,Lake Melanie,ISO Certified
+H075,"Fritz, Torres and Lopez Hospital",Richardport,NABH
+H076,Hayes-Rosales Hospital,New Shawn,Joint Commission
+H077,Duran-Pearson Hospital,Henrymouth,Joint Commission
+H078,Cooper-Williams Hospital,Diazmouth,Joint Commission
+H079,Bolton Ltd Hospital,Debraport,NABH
+H080,"Graham, Peterson and Pena Hospital",Mooneystad,NABH
+H081,"Griffin, Lucas and Payne Hospital",Weavertown,NABH
+H082,Schroeder-Johnson Hospital,Duffychester,NABH
+H083,Cohen Inc Hospital,Zacharyside,NABH
+H084,Jacobs and Sons Hospital,New Richardside,NABH
+H085,Baker LLC Hospital,South Ginaberg,ISO Certified
+H086,"Chapman, Harper and Dickson Hospital",Wrightview,Joint Commission
+H087,"Navarro, Sexton and Walker Hospital",East Sara,Joint Commission
+H088,David Ltd Hospital,East Victoria,NABH
+H089,Roth-Lopez Hospital,Edwardfurt,Joint Commission
+H090,Gill PLC Hospital,Port Patrick,ISO Certified
+H091,Tucker LLC Hospital,Lake Codyport,ISO Certified
+H092,Johnson LLC Hospital,South Kellyfort,Joint Commission
+H093,Hill-Rhodes Hospital,Amandaville,NABH
+H094,"Nguyen, Long and Wilson Hospital",New Thomas,Joint Commission
+H095,"Beard, Rose and Yates Hospital",Lake Derrick,Joint Commission
+H096,Hernandez LLC Hospital,Lake Rachaelbury,ISO Certified
+H097,"Wagner, Kelly and Price Hospital",Stephanieville,Joint Commission
+H098,"Figueroa, Gordon and Willis Hospital",Johnsonborough,Joint Commission
+H099,"Brock, Smith and Ortega Hospital",North Tiffany,NABH
+H100,Perry-Parker Hospital,South Steven,Joint Commission
