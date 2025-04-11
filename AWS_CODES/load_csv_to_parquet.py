@@ -8,12 +8,32 @@ from io import BytesIO
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
+
+def move_files_to_archive(s3_client, archive_bucket, file_key):
+    try:
+        source_bucket = os.environ.get('processing_layer')
+        copy_source = {'Bucket': source_bucket, 'Key': file_key}
+
+        # Copy the object to the archive bucket
+        s3_client.copy_object(
+            Bucket=archive_bucket,
+            CopySource=copy_source,
+            Key=file_key
+        )
+
+        # Delete the object from the source bucket
+        s3_client.delete_object(Bucket=source_bucket, Key=file_key)
+        logger.info(f"Moved file '{file_key}' from '{source_bucket}' to archive bucket '{archive_bucket}'.")
+    except Exception as e:
+        logger.error(f"Error moving file '{file_key}' to archive bucket '{archive_bucket}': {e}")
+
 def lambda_handler(event, context):
     logger.info('START OF EVENT')
     s3_client = boto3.client('s3')
 
     source_bucket = os.environ.get('processing_layer')
     destination_bucket = os.environ.get('ploicy_Cleansed')
+    archive_bucket=os.environ.get('archive_layer')
 
     if not source_bucket:
         logger.error("The 'processing_layer' environment variable is not set.")
@@ -78,6 +98,8 @@ def lambda_handler(event, context):
                 # Upload the Parquet file to the destination bucket
                 s3_client.upload_fileobj(parquet_buffer, destination_bucket, destination_key)
                 logger.info(f"Successfully converted and loaded '{file_key}' to '{destination_bucket}/{destination_key}'")
+                
+                move_files_to_archive(archive_bucket, file_key, s3_client)  #to move to archive and cleanse the existing bucket
 
             return {
                 'statusCode': 200,
