@@ -19,6 +19,9 @@ Files or datasets containing **descriptive, slowly changing, or reference-like i
 
 ---
 
+###CUSTOMER_DATA : update columns first_name,last_name,address,pincode.city
+
+
 ### 📊 **Fact Table: Insurance Claims**
 
 The **fact table** captures **measurable business processes or events**, like a claim being submitted or a payment being made.
