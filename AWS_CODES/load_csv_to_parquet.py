@@ -3,118 +3,170 @@ import boto3
 import os
 import logging
 import pandas as pd
-from io import BytesIO
+from io import BytesIO, StringIO
+from datetime import datetime
 
+
+
+
+log_stream = StringIO()
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 
-def move_files_to_archive(s3_client, archive_bucket, file_key):
+for handler in logger.handlers[:]:
+    logger.removeHandler(handler)
+
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+logger.addHandler(console_handler)
+
+# Memory handler (for S3 logs)
+memory_handler = logging.StreamHandler(log_stream)
+memory_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+logger.addHandler(memory_handler)
+
+s3_client = boto3.client('s3')
+
+# Read environment variables
+AWS_REGION = os.getenv("AWS_REGION")
+SOURCE_BUCKET = os.getenv("processing_layer")
+DESTINATION_BUCKET = os.getenv("ploicy_Cleansed")
+ARCHIVE_BUCKET = os.getenv("archive_layer")
+LOG_BUCKET = os.getenv("log_path")  # This should be set to your log bucket name
+
+def upload_logs_to_s3():
     try:
-        source_bucket = os.environ.get('processing_layer')
-        copy_source = {'Bucket': source_bucket, 'Key': file_key}
-
-        # Copy the object to the archive bucket
-        s3_client.copy_object(
-            Bucket=archive_bucket,
-            CopySource=copy_source,
-            Key=file_key
+        log_stream.seek(0)
+        log_contents = log_stream.getvalue()
+        log_filename = f"Logs/lambda_log_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
+        s3_client.put_object(
+            Bucket=LOG_BUCKET,
+            Key=log_filename,
+            Body=log_contents.encode("utf-8")
         )
-
-        # Delete the object from the source bucket
-        s3_client.delete_object(Bucket=source_bucket, Key=file_key)
-        logger.info(f"Moved file '{file_key}' from '{source_bucket}' to archive bucket '{archive_bucket}'.")
+        logger.info(f"Logs uploaded to S3 at: s3://{LOG_BUCKET}/{log_filename}")
     except Exception as e:
-        logger.error(f"Error moving file '{file_key}' to archive bucket '{archive_bucket}': {e}")
+        logger.error(f"Failed to upload logs to S3: {e}")
+
+def move_all_files_to_archive():
+    try:
+        archive_subfolder = "RAW_ARCHIVE/"
+        today_date = datetime.now().strftime("%Y-%m-%d")
+        date_folder = archive_subfolder + today_date + "/"
+
+        response = s3_client.list_objects_v2(Bucket=SOURCE_BUCKET)
+
+        if "Contents" in response:
+            for obj in response["Contents"]:
+                file_key = obj["Key"]
+                copy_source = {"Bucket": SOURCE_BUCKET, "Key": file_key}
+                destination_key = date_folder + file_key
+
+                s3_client.copy_object(Bucket=ARCHIVE_BUCKET, CopySource=copy_source, Key=destination_key)
+                s3_client.delete_object(Bucket=SOURCE_BUCKET, Key=file_key)
+
+                logger.info(f"Moved file '{file_key}' to archive '{ARCHIVE_BUCKET}/{destination_key}'.")
+        else:
+            logger.info("No files found in the source bucket.")
+
+    except Exception as e:
+        logger.error(f"Error moving files to archive: {e}")
 
 def lambda_handler(event, context):
-    logger.info('START OF EVENT')
-    s3_client = boto3.client('s3')
+    logger.info('Lambda triggered for file processing.')
 
-    source_bucket = os.environ.get('processing_layer')
-    destination_bucket = os.environ.get('ploicy_Cleansed')
-    archive_bucket=os.environ.get('archive_layer')
+    # Log environment variable values
+    logger.info(f"AWS_REGION: {AWS_REGION}")
+    logger.info(f"SOURCE_BUCKET: {SOURCE_BUCKET}")
+    logger.info(f"DESTINATION_BUCKET: {DESTINATION_BUCKET}")
+    logger.info(f"ARCHIVE_BUCKET: {ARCHIVE_BUCKET}")
+    logger.info(f"LOG_BUCKET: {LOG_BUCKET}")
 
-    if not source_bucket:
-        logger.error("The 'processing_layer' environment variable is not set.")
+    # Check for missing environment variables
+    missing_vars = []
+    if not SOURCE_BUCKET:
+        missing_vars.append("processing_layer")
+    if not DESTINATION_BUCKET:
+        missing_vars.append("policy_Cleansed")
+    if not ARCHIVE_BUCKET:
+        missing_vars.append("archive_layer")
+    if not LOG_BUCKET:
+        missing_vars.append("log_path")
+
+    if missing_vars:
+        error_message = f"Missing required environment variables: {', '.join(missing_vars)}"
+        logger.error(error_message)
+        upload_logs_to_s3()
         return {
             'statusCode': 500,
-            'body': json.dumps("Error: 'processing_layer' environment variable not found.")
+            'body': json.dumps(error_message)
         }
-
-    if not destination_bucket:
-        logger.error("The 'ploicy_Cleansed' environment variable is not set.")
-        return {
-            'statusCode': 500,
-            'body': json.dumps("Error: 'ploicy_Cleansed' environment variable not found.")
-        }
-
-    logger.info(f"Source Bucket: {source_bucket}")
-    logger.info(f"Destination Bucket: {destination_bucket}")
 
     try:
-        response = s3_client.list_objects_v2(Bucket=source_bucket)
-        logger.info('LISTING OBJECTS IN SOURCE BUCKET')
+        response = s3_client.list_objects_v2(Bucket=SOURCE_BUCKET)
         files = response.get('Contents', [])
 
-        if files:
-            for file in files:
-                file_key = file.get('Key')
-                logger.info(f"Processing file: {file_key}")
-                filename_without_extension = os.path.splitext(os.path.basename(file_key))[0]
-                destination_prefix = f"{filename_without_extension}/"
-                logger.info(f"Destination Prefix: {destination_prefix}")
-                response = s3_client.get_object(Bucket=source_bucket, Key=file_key)
-                file_content = response['Body'].read()
+        if not files:
+            logger.info("No files found in source bucket.")
+            upload_logs_to_s3()
+            return {
+                'statusCode': 200,
+                'body': json.dumps(f"No files found in '{SOURCE_BUCKET}'.")
+            }
+
+        for file in files:
+            file_key = file.get('Key')
+            logger.info(f"Processing file: {file_key}")
+            filename_without_ext = os.path.splitext(os.path.basename(file_key))[0]
+            destination_prefix = f"{filename_without_ext}/"
+            response = s3_client.get_object(Bucket=SOURCE_BUCKET, Key=file_key)
+            file_content = response['Body'].read()
+
+            # Read file into DataFrame
+            try:
                 if file_key.endswith('.csv'):
-                    try:
-                        df = pd.read_csv(BytesIO(file_content))
-                    except Exception as e:
-                        logger.error(f"Error reading CSV file '{file_key}': {e}")
-                        continue
+                    df = pd.read_csv(BytesIO(file_content))
                 elif file_key.endswith('.json'):
-                    try:
-                        df = pd.read_json(BytesIO(file_content), lines=True)
-                    except Exception as e:
-                        logger.error(f"Error reading JSON file '{file_key}': {e}")
-                        continue
+                    df = pd.read_json(BytesIO(file_content), lines=True)
                 elif file_key.endswith(('.xlsx', '.xls')):
-                    try:
-                        df = pd.read_excel(BytesIO(file_content))
-                    except Exception as e:
-                        logger.error(f"Error reading Excel file '{file_key}': {e}")
-                        continue
+                    df = pd.read_excel(BytesIO(file_content))
                 else:
-                    logger.warning(f"Unsupported file format for '{file_key}'. Skipping.")
+                    logger.warning(f"Unsupported format: {file_key}")
                     continue
+            except Exception as e:
+                logger.error(f"Failed to read '{file_key}': {e}")
+                continue
 
-                # Convert DataFrame to Parquet format in memory
-                parquet_buffer = BytesIO()
+            # Convert DataFrame to Parquet
+            parquet_buffer = BytesIO()
+            try:
                 df.to_parquet(parquet_buffer, index=False)
-                parquet_buffer.seek(0)
+            except Exception as e:
+                logger.error(f"Failed to convert to Parquet: {e}")
+                continue
 
-                destination_key = f"{destination_prefix}{os.path.splitext(os.path.basename(file_key))[0]}.parquet"
+            parquet_buffer.seek(0)
+            destination_key = f"{destination_prefix}{filename_without_ext}.parquet"
 
-                # Upload the Parquet file to the destination bucket
-                s3_client.upload_fileobj(parquet_buffer, destination_bucket, destination_key)
-                logger.info(f"Successfully converted and loaded '{file_key}' to '{destination_bucket}/{destination_key}'")
-                
-                move_files_to_archive(archive_bucket, file_key, s3_client)  #to move to archive and cleanse the existing bucket
+            s3_client.upload_fileobj(parquet_buffer, DESTINATION_BUCKET, destination_key)
+            logger.info(f"Uploaded '{file_key}' as Parquet to '{DESTINATION_BUCKET}/{destination_key}'")
 
-            return {
-                'statusCode': 200,
-                'body': json.dumps(f"Successfully processed and loaded files to '{destination_bucket}' with folders based on filenames.")
-            }
-        else:
-            logger.info(f"No files found in '{source_bucket}'.")
-            return {
-                'statusCode': 200,
-                'body': json.dumps(f"No files found in '{source_bucket}'.")
-            }
+        # Archive original files
+        move_all_files_to_archive()
+
+        # Upload logs
+        upload_logs_to_s3()
+
+        return {
+            'statusCode': 200,
+            'body': json.dumps(f"Processed and moved files to '{DESTINATION_BUCKET}'")
+        }
 
     except Exception as e:
-        logger.error(f"An error occurred: {e}")
+        logger.error(f"Lambda failed: {e}")
+        upload_logs_to_s3()
         return {
             'statusCode': 500,
-            'body': json.dumps(f"Error processing files: {str(e)}")
+            'body': json.dumps(f"Error: {str(e)}")
         }
