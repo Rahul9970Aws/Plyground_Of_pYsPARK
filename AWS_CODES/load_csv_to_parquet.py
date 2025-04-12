@@ -6,17 +6,18 @@ import pandas as pd
 from io import BytesIO, StringIO
 from datetime import datetime
 
-
-
-
+# Create in-memory log buffer
 log_stream = StringIO()
+
+# Set up logging
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-
+# Remove default handlers (if any)
 for handler in logger.handlers[:]:
     logger.removeHandler(handler)
 
+# Console handler (CloudWatch logs)
 console_handler = logging.StreamHandler()
 console_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
 logger.addHandler(console_handler)
@@ -26,6 +27,7 @@ memory_handler = logging.StreamHandler(log_stream)
 memory_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
 logger.addHandler(memory_handler)
 
+# Initialize AWS S3 client
 s3_client = boto3.client('s3')
 
 # Read environment variables
@@ -39,7 +41,7 @@ def upload_logs_to_s3():
     try:
         log_stream.seek(0)
         log_contents = log_stream.getvalue()
-        log_filename = f"Logs/lambda_log_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
+        log_filename = f"Logs/ploicy_cleansed_loader_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
         s3_client.put_object(
             Bucket=LOG_BUCKET,
             Key=log_filename,
