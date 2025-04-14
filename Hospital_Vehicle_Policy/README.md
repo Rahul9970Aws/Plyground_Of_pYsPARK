@@ -1,3 +1,5 @@
+Snowflake link :
+https://app.snowflake.com/fhcqdcv/qw06663/#/homepage
 
  In your insurance ETL pipeline, once you've ingested the files (CSV, JSON, XML, TXT) and loaded them to your **Bronze layer**, the **next step** involves **data modeling** — especially for analytical/reporting use cases. Here's how to think about **dimension vs fact** tables.
 
