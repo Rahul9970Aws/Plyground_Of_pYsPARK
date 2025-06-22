@@ -21,6 +21,9 @@ WHERE target.id = source.id
     target.currentaddressid IS DISTINCT FROM source.currentaddressid
   );
 
+
+
+
 -- Step 2: Insert new versioned record for new or changed rows
 INSERT INTO dim_customer_type2 (
     id, 
@@ -62,5 +65,5 @@ WHERE
 
 --drop the temp table
 
-DROP TABLE temp_src
+DROP TABLE temp_src;
 
