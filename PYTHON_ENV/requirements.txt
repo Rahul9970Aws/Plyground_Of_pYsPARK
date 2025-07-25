@@ -1,0 +1,26 @@
+# Database Drivers
+pip ==3.2.0
+psycopg2-binary==2.9.10
+pymysql      # latest
+pyodbc       # latest
+# cx_Oracle if needed (but oracledb is preferred)
+
+# Snowflake
+snowflake-connector-python==3.5.0
+snowflake-sqlalchemy   # specify version if needed
+
+# AWS SDK
+boto3      # latest
+botocore   # latest (usually tied to boto3)
+
+# ETL / Data Tools
+pandas     # latest
+sqlalchemy # latest
+pyarrow    # latest, if needed
+s3fs       # latest
+
+# Utilities
+python-dotenv
+configparser
+loguru
+retry

@@ -1,0 +1,14 @@
+{
+  "customer_export": {
+    "db_type": "postgresql",
+    "table_name": "webshop.dim_customer"
+  },
+  "orders_export": {
+    "db_type": "mysql",
+    "table_name": "sales.orders"
+  },
+  "product_export": {
+    "db_type": "postgresql",
+    "table_name": "inventory.products"
+  }
+}
