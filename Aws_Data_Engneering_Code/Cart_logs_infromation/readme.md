@@ -25,3 +25,19 @@
 | `login_count`    | Count of distinct `log_id` values for that user & date     | 3          |
 | `total_quantity` | Sum of quantity purchased on that date (NULL treated as 0) | 5          |
 | `total_amount`   | Sum of total purchase amount for that date                 | 450.60     |
+
+
+
+
+CREATE TABLE fact_user_events (
+    log_id           VARCHAR(50) NOT NULL,
+    user_id          VARCHAR(50) NOT NULL,
+    event_date       DATE NOT NULL,
+    event_timestamp  TIMESTAMP_NTZ NOT NULL,
+    event_type       VARCHAR(50) NOT NULL,
+    product_id       VARCHAR(50),
+    category         VARCHAR(100),
+    quantity         NUMBER(10,2),
+    unit_price       NUMBER(12,2),
+    total_amount     NUMBER(14,2)
+);
