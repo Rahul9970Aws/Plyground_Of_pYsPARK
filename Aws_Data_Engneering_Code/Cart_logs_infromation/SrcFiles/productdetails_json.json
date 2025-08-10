@@ -1,0 +1,152 @@
+[
+  {
+    "product_id": "prod_501",
+    "name": "Elegance Pro 4K Monitor",
+    "category": "electronics",
+    "description": "A 27-inch 4K UHD monitor with a sleek, minimalist design, perfect for professional creatives and gamers alike. Features include a high refresh rate, HDR support, and eye-care technology."
+  },
+  {
+    "product_id": "prod_502",
+    "name": "Classic Denim Jacket",
+    "category": "clothing",
+    "description": "A timeless denim jacket made from high-quality, durable cotton. Features a classic fit, button-front closure, and multiple pockets for a functional and fashionable look."
+  },
+  {
+    "product_id": "prod_503",
+    "name": "Acoustic Noise-Cancelling Headphones",
+    "category": "electronics",
+    "description": "Premium over-ear headphones with industry-leading noise cancellation. Provides a rich, immersive audio experience with a comfortable design and long-lasting battery life."
+  },
+  {
+    "product_id": "prod_504",
+    "name": "The Voyager's Guide",
+    "category": "books",
+    "description": "A captivating travel memoir detailing a solo journey across continents, filled with breathtaking photography and inspiring personal anecdotes."
+  },
+  {
+    "product_id": "prod_505",
+    "name": "Smart Home Hub",
+    "category": "electronics",
+    "description": "The central control for your smart home devices. Seamlessly connects and manages lights, thermostats, security cameras, and other compatible gadgets using voice commands or a mobile app."
+  },
+  {
+    "product_id": "prod_506",
+    "name": "Vintage Leather Wallet",
+    "category": "accessories",
+    "description": "A handcrafted leather wallet with a vintage finish. Features multiple card slots, a cash compartment, and a small coin pouch for everyday convenience."
+  },
+  {
+    "product_id": "prod_507",
+    "name": "Ultra-Soft Merino Wool Sweater",
+    "category": "clothing",
+    "description": "A luxurious sweater made from 100% fine merino wool. Offers exceptional warmth and comfort with a soft, non-itchy feel, perfect for colder seasons."
+  },
+  {
+    "product_id": "prod_508",
+    "name": "Mystery of the Emerald Isle",
+    "category": "books",
+    "description": "A thrilling mystery novel set in the picturesque landscapes of Ireland. Follows a detective as he unravels a centuries-old secret linked to a local legend."
+  },
+  {
+    "product_id": "prod_509",
+    "name": "Ergonomic Office Chair",
+    "category": "home_goods",
+    "description": "A high-back office chair designed for maximum comfort and support. Features adjustable lumbar support, armrests, and a breathable mesh back for long hours of work."
+  },
+  {
+    "product_id": "prod_510",
+    "name": "Portable Power Bank 20000mAh",
+    "category": "electronics",
+    "description": "A high-capacity power bank capable of charging multiple devices on the go. Equipped with fast-charging technology and a durable, compact design."
+  },
+  {
+    "product_id": "prod_511",
+    "name": "Performance Running Shoes",
+    "category": "clothing",
+    "description": "Lightweight and breathable running shoes engineered for optimal performance. Provides excellent cushioning and support for long-distance runs and sprints."
+  },
+  {
+    "product_id": "prod_512",
+    "name": "The Art of Minimalist Living",
+    "category": "books",
+    "description": "A practical guide to decluttering your life and embracing a minimalist lifestyle. Includes tips on organization, mindset, and creating a peaceful living space."
+  },
+  {
+    "product_id": "prod_513",
+    "name": "Silk Scarf with Floral Print",
+    "category": "clothing",
+    "description": "A beautiful silk scarf featuring a delicate floral print. A versatile accessory that can be worn in multiple ways to add a touch of elegance to any outfit."
+  },
+  {
+    "product_id": "prod_514",
+    "name": "Digital Air Fryer",
+    "category": "home_goods",
+    "description": "A modern air fryer with a digital display and multiple preset cooking functions. Allows you to fry, bake, grill, and roast with minimal oil for healthier meals."
+  },
+  {
+    "product_id": "prod_515",
+    "name": "Smart Scale with Body Analysis",
+    "category": "home_goods",
+    "description": "A smart bathroom scale that tracks weight, body fat, muscle mass, and more. Syncs with your smartphone to provide detailed insights and help you reach your fitness goals."
+  },
+  {
+    "product_id": "prod_516",
+    "name": "Gaming Keyboard with RGB Lighting",
+    "category": "electronics",
+    "description": "A mechanical gaming keyboard with customizable RGB backlighting, tactile keys, and anti-ghosting technology for a superior gaming experience."
+  },
+  {
+    "product_id": "prod_517",
+    "name": "Men's Classic Chinos",
+    "category": "clothing",
+    "description": "Versatile and comfortable chinos made from a cotton-stretch blend. Perfect for a smart-casual look, available in a variety of colors."
+  },
+  {
+    "product_id": "prod_518",
+    "name": "Portable Bluetooth Speaker",
+    "category": "electronics",
+    "description": "A compact and powerful Bluetooth speaker with rich bass and clear audio. Features a rugged, waterproof design, ideal for outdoor adventures."
+  },
+  {
+    "product_id": "prod_519",
+    "name": "Drone with 4K Camera",
+    "category": "electronics",
+    "description": "A high-performance drone equipped with a stabilized 4K camera, intelligent flight modes, and a long flight time, perfect for aerial photography."
+  },
+  {
+    "product_id": "prod_520",
+    "name": "Cast Iron Skillet",
+    "category": "home_goods",
+    "description": "A durable and pre-seasoned cast iron skillet for exceptional heat retention and even cooking. Suitable for stovetop, oven, and campfire use."
+  },
+  {
+    "product_id": "prod_521",
+    "name": "The Galactic Saga: Part 1",
+    "category": "books",
+    "description": "The first installment of an epic science fiction series. Takes you on a thrilling journey through a vast and dangerous galaxy, filled with political intrigue and alien civilizations."
+  },
+  {
+    "product_id": "prod_522",
+    "name": "Women's High-Waisted Leggings",
+    "category": "clothing",
+    "description": "Comfortable and supportive leggings with a high-waisted design. Made from a moisture-wicking fabric, perfect for yoga, workouts, or everyday wear."
+  },
+  {
+    "product_id": "prod_523",
+    "name": "Smartwatch with Fitness Tracking",
+    "category": "electronics",
+    "description": "A sleek smartwatch that tracks your steps, heart rate, sleep, and more. Features a vibrant display, long battery life, and smartphone notifications."
+  },
+  {
+    "product_id": "prod_524",
+    "name": "Essential Oil Diffuser",
+    "category": "home_goods",
+    "description": "A stylish and quiet essential oil diffuser that humidifies the air and disperses your favorite scents, creating a relaxing and calming atmosphere."
+  },
+  {
+    "product_id": "prod_525",
+    "name": "Culinary Delights Cookbook",
+    "category": "books",
+    "description": "A cookbook filled with delicious and easy-to-follow recipes from around the world. Features full-color photography and cooking tips for all skill levels."
+  }
+]

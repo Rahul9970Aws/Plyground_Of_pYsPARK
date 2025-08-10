@@ -1,0 +1,627 @@
+[
+  {
+    "log_id": "log_001",
+    "user_id": "user_101",
+    "timestamp": "2025-08-01T09:30:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_501",
+    "category": "electronics",
+    "price": 1200.00
+  },
+  {
+    "log_id": "log_002",
+    "user_id": "user_101",
+    "timestamp": "2025-08-01T09:35:15Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_501",
+    "category": "electronics",
+    "quantity": 1,
+    "price": 1200.00
+  },
+  {
+    "log_id": "log_003",
+    "user_id": "user_102",
+    "timestamp": "2025-08-01T10:05:22Z",
+    "event_type": "product_view",
+    "product_id": "prod_502",
+    "category": "clothing",
+    "price": 45.50
+  },
+  {
+    "log_id": "log_004",
+    "user_id": "user_103",
+    "timestamp": "2025-08-01T11:10:45Z",
+    "event_type": "product_view",
+    "product_id": "prod_503",
+    "category": "home_goods",
+    "price": 75.20
+  },
+  {
+    "log_id": "log_005",
+    "user_id": "user_103",
+    "timestamp": "2025-08-01T11:12:01Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_503",
+    "category": "home_goods",
+    "quantity": 2,
+    "price": 75.20
+  },
+  {
+    "log_id": "log_006",
+    "user_id": "user_101",
+    "timestamp": "2025-08-01T11:45:30Z",
+    "event_type": "checkout",
+    "cart_items": [
+      {
+        "product_id": "prod_501",
+        "quantity": 1,
+        "price": 1200.00
+      }
+    ],
+    "total_amount": 1200.00
+  },
+  {
+    "log_id": "log_007",
+    "user_id": "user_104",
+    "timestamp": "2025-08-01T12:00:10Z",
+    "event_type": "product_view",
+    "product_id": "prod_504",
+    "category": "books",
+    "price": 25.99
+  },
+  {
+    "log_id": "log_008",
+    "user_id": "user_102",
+    "timestamp": "2025-08-01T12:30:50Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_502",
+    "category": "clothing",
+    "quantity": 1,
+    "price": 45.50
+  },
+  {
+    "log_id": "log_009",
+    "user_id": "user_105",
+    "timestamp": "2025-08-01T13:15:05Z",
+    "event_type": "product_view",
+    "product_id": "prod_505",
+    "category": "electronics",
+    "price": 899.99
+  },
+  {
+    "log_id": "log_010",
+    "user_id": "user_105",
+    "timestamp": "2025-08-01T13:18:20Z",
+    "event_type": "product_view",
+    "product_id": "prod_506",
+    "category": "electronics",
+    "price": 250.00
+  },
+  {
+    "log_id": "log_011",
+    "user_id": "user_105",
+    "timestamp": "2025-08-01T13:25:40Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_505",
+    "category": "electronics",
+    "quantity": 1,
+    "price": 899.99
+  },
+  {
+    "log_id": "log_012",
+    "user_id": "user_102",
+    "timestamp": "2025-08-01T14:00:10Z",
+    "event_type": "checkout",
+    "cart_items": [
+      {
+        "product_id": "prod_502",
+        "quantity": 1,
+        "price": 45.50
+      }
+    ],
+    "total_amount": 45.50
+  },
+  {
+    "log_id": "log_013",
+    "user_id": "user_106",
+    "timestamp": "2025-08-01T14:30:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_507",
+    "category": "clothing",
+    "price": 30.00
+  },
+  {
+    "log_id": "log_014",
+    "user_id": "user_106",
+    "timestamp": "2025-08-01T14:32:15Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_507",
+    "category": "clothing",
+    "quantity": 3,
+    "price": 30.00
+  },
+  {
+    "log_id": "log_015",
+    "user_id": "user_104",
+    "timestamp": "2025-08-01T15:00:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_508",
+    "category": "books",
+    "price": 15.75
+  },
+  {
+    "log_id": "log_016",
+    "user_id": "user_104",
+    "timestamp": "2025-08-01T15:02:30Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_508",
+    "category": "books",
+    "quantity": 1,
+    "price": 15.75
+  },
+  {
+    "log_id": "log_017",
+    "user_id": "user_107",
+    "timestamp": "2025-08-01T15:45:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_509",
+    "category": "home_goods",
+    "price": 125.00
+  },
+  {
+    "log_id": "log_018",
+    "user_id": "user_107",
+    "timestamp": "2025-08-01T15:48:10Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_509",
+    "category": "home_goods",
+    "quantity": 1,
+    "price": 125.00
+  },
+  {
+    "log_id": "log_019",
+    "user_id": "user_108",
+    "timestamp": "2025-08-01T16:10:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_510",
+    "category": "electronics",
+    "price": 350.00
+  },
+  {
+    "log_id": "log_020",
+    "user_id": "user_108",
+    "timestamp": "2025-08-01T16:15:30Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_510",
+    "category": "electronics",
+    "quantity": 1,
+    "price": 350.00
+  },
+  {
+    "log_id": "log_021",
+    "user_id": "user_109",
+    "timestamp": "2025-08-01T17:00:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_511",
+    "category": "clothing",
+    "price": 55.00
+  },
+  {
+    "log_id": "log_022",
+    "user_id": "user_109",
+    "timestamp": "2025-08-01T17:05:00Z",
+    "event_type": "checkout",
+    "cart_items": [
+      {
+        "product_id": "prod_511",
+        "quantity": 1,
+        "price": 55.00
+      }
+    ],
+    "total_amount": 55.00
+  },
+  {
+    "log_id": "log_023",
+    "user_id": "user_110",
+    "timestamp": "2025-08-01T17:30:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_512",
+    "category": "books",
+    "price": 12.99
+  },
+  {
+    "log_id": "log_024",
+    "user_id": "user_110",
+    "timestamp": "2025-08-01T17:35:00Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_512",
+    "category": "books",
+    "quantity": 2,
+    "price": 12.99
+  },
+  {
+    "log_id": "log_025",
+    "user_id": "user_101",
+    "timestamp": "2025-08-02T09:00:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_513",
+    "category": "clothing",
+    "price": 60.00
+  },
+  {
+    "log_id": "log_026",
+    "user_id": "user_101",
+    "timestamp": "2025-08-02T09:05:10Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_513",
+    "category": "clothing",
+    "quantity": 1,
+    "price": 60.00
+  },
+  {
+    "log_id": "log_027",
+    "user_id": "user_102",
+    "timestamp": "2025-08-02T10:15:30Z",
+    "event_type": "product_view",
+    "product_id": "prod_514",
+    "category": "home_goods",
+    "price": 99.50
+  },
+  {
+    "log_id": "log_028",
+    "user_id": "user_102",
+    "timestamp": "2025-08-02T10:18:45Z",
+    "event_type": "product_view",
+    "product_id": "prod_515",
+    "category": "home_goods",
+    "price": 250.00
+  },
+  {
+    "log_id": "log_029",
+    "user_id": "user_102",
+    "timestamp": "2025-08-02T10:20:00Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_514",
+    "category": "home_goods",
+    "quantity": 1,
+    "price": 99.50
+  },
+  {
+    "log_id": "log_030",
+    "user_id": "user_103",
+    "timestamp": "2025-08-02T11:00:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_516",
+    "category": "electronics",
+    "price": 450.00
+  },
+  {
+    "log_id": "log_031",
+    "user_id": "user_103",
+    "timestamp": "2025-08-02T11:05:00Z",
+    "event_type": "checkout",
+    "cart_items": [
+      {
+        "product_id": "prod_503",
+        "quantity": 2,
+        "price": 75.20
+      }
+    ],
+    "total_amount": 150.40
+  },
+  {
+    "log_id": "log_032",
+    "user_id": "user_104",
+    "timestamp": "2025-08-02T12:30:00Z",
+    "event_type": "checkout",
+    "cart_items": [
+      {
+        "product_id": "prod_508",
+        "quantity": 1,
+        "price": 15.75
+      }
+    ],
+    "total_amount": 15.75
+  },
+  {
+    "log_id": "log_033",
+    "user_id": "user_105",
+    "timestamp": "2025-08-02T13:00:00Z",
+    "event_type": "checkout",
+    "cart_items": [
+      {
+        "product_id": "prod_505",
+        "quantity": 1,
+        "price": 899.99
+      }
+    ],
+    "total_amount": 899.99
+  },
+  {
+    "log_id": "log_034",
+    "user_id": "user_106",
+    "timestamp": "2025-08-02T14:10:00Z",
+    "event_type": "checkout",
+    "cart_items": [
+      {
+        "product_id": "prod_507",
+        "quantity": 3,
+        "price": 30.00
+      }
+    ],
+    "total_amount": 90.00
+  },
+  {
+    "log_id": "log_035",
+    "user_id": "user_107",
+    "timestamp": "2025-08-02T15:20:00Z",
+    "event_type": "checkout",
+    "cart_items": [
+      {
+        "product_id": "prod_509",
+        "quantity": 1,
+        "price": 125.00
+      }
+    ],
+    "total_amount": 125.00
+  },
+  {
+    "log_id": "log_036",
+    "user_id": "user_108",
+    "timestamp": "2025-08-02T16:30:00Z",
+    "event_type": "checkout",
+    "cart_items": [
+      {
+        "product_id": "prod_510",
+        "quantity": 1,
+        "price": 350.00
+      }
+    ],
+    "total_amount": 350.00
+  },
+  {
+    "log_id": "log_037",
+    "user_id": "user_110",
+    "timestamp": "2025-08-02T17:40:00Z",
+    "event_type": "checkout",
+    "cart_items": [
+      {
+        "product_id": "prod_512",
+        "quantity": 2,
+        "price": 12.99
+      }
+    ],
+    "total_amount": 25.98
+  },
+  {
+    "log_id": "log_038",
+    "user_id": "user_111",
+    "timestamp": "2025-08-03T08:00:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_517",
+    "category": "clothing",
+    "price": 20.00
+  },
+  {
+    "log_id": "log_039",
+    "user_id": "user_111",
+    "timestamp": "2025-08-03T08:02:00Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_517",
+    "category": "clothing",
+    "quantity": 1,
+    "price": 20.00
+  },
+  {
+    "log_id": "log_040",
+    "user_id": "user_112",
+    "timestamp": "2025-08-03T09:15:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_518",
+    "category": "electronics",
+    "price": 750.00
+  },
+  {
+    "log_id": "log_041",
+    "user_id": "user_112",
+    "timestamp": "2025-08-03T09:20:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_519",
+    "category": "electronics",
+    "price": 150.00
+  },
+  {
+    "log_id": "log_042",
+    "user_id": "user_112",
+    "timestamp": "2025-08-03T09:22:00Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_518",
+    "category": "electronics",
+    "quantity": 1,
+    "price": 750.00
+  },
+  {
+    "log_id": "log_043",
+    "user_id": "user_113",
+    "timestamp": "2025-08-03T10:30:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_520",
+    "category": "home_goods",
+    "price": 85.00
+  },
+  {
+    "log_id": "log_044",
+    "user_id": "user_113",
+    "timestamp": "2025-08-03T10:35:00Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_520",
+    "category": "home_goods",
+    "quantity": 1,
+    "price": 85.00
+  },
+  {
+    "log_id": "log_045",
+    "user_id": "user_114",
+    "timestamp": "2025-08-03T11:45:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_521",
+    "category": "books",
+    "price": 30.00
+  },
+  {
+    "log_id": "log_046",
+    "user_id": "user_114",
+    "timestamp": "2025-08-03T11:47:00Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_521",
+    "category": "books",
+    "quantity": 1,
+    "price": 30.00
+  },
+  {
+    "log_id": "log_047",
+    "user_id": "user_101",
+    "timestamp": "2025-08-03T12:00:00Z",
+    "event_type": "checkout",
+    "cart_items": [
+      {
+        "product_id": "prod_513",
+        "quantity": 1,
+        "price": 60.00
+      }
+    ],
+    "total_amount": 60.00
+  },
+  {
+    "log_id": "log_048",
+    "user_id": "user_102",
+    "timestamp": "2025-08-03T13:00:00Z",
+    "event_type": "checkout",
+    "cart_items": [
+      {
+        "product_id": "prod_514",
+        "quantity": 1,
+        "price": 99.50
+      }
+    ],
+    "total_amount": 99.50
+  },
+  {
+    "log_id": "log_049",
+    "user_id": "user_115",
+    "timestamp": "2025-08-03T14:00:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_522",
+    "category": "clothing",
+    "price": 40.00
+  },
+  {
+    "log_id": "log_050",
+    "user_id": "user_115",
+    "timestamp": "2025-08-03T14:05:00Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_522",
+    "category": "clothing",
+    "quantity": 1,
+    "price": 40.00
+  },
+  {
+    "log_id": "log_051",
+    "user_id": "user_115",
+    "timestamp": "2025-08-03T14:10:00Z",
+    "event_type": "checkout",
+    "cart_items": [
+      {
+        "product_id": "prod_522",
+        "quantity": 1,
+        "price": 40.00
+      }
+    ],
+    "total_amount": 40.00
+  },
+  {
+    "log_id": "log_052",
+    "user_id": "user_116",
+    "timestamp": "2025-08-03T15:00:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_523",
+    "category": "electronics",
+    "price": 199.99
+  },
+  {
+    "log_id": "log_053",
+    "user_id": "user_116",
+    "timestamp": "2025-08-03T15:05:00Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_523",
+    "category": "electronics",
+    "quantity": 1,
+    "price": 199.99
+  },
+  {
+    "log_id": "log_054",
+    "user_id": "user_117",
+    "timestamp": "2025-08-03T16:00:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_524",
+    "category": "home_goods",
+    "price": 65.00
+  },
+  {
+    "log_id": "log_055",
+    "user_id": "user_117",
+    "timestamp": "2025-08-03T16:02:00Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_524",
+    "category": "home_goods",
+    "quantity": 2,
+    "price": 65.00
+  },
+  {
+    "log_id": "log_056",
+    "user_id": "user_117",
+    "timestamp": "2025-08-03T16:05:00Z",
+    "event_type": "checkout",
+    "cart_items": [
+      {
+        "product_id": "prod_524",
+        "quantity": 2,
+        "price": 65.00
+      }
+    ],
+    "total_amount": 130.00
+  },
+  {
+    "log_id": "log_057",
+    "user_id": "user_118",
+    "timestamp": "2025-08-03T17:00:00Z",
+    "event_type": "product_view",
+    "product_id": "prod_525",
+    "category": "books",
+    "price": 18.50
+  },
+  {
+    "log_id": "log_058",
+    "user_id": "user_118",
+    "timestamp": "2025-08-03T17:03:00Z",
+    "event_type": "add_to_cart",
+    "product_id": "prod_525",
+    "category": "books",
+    "quantity": 1,
+    "price": 18.50
+  },
+  {
+    "log_id": "log_059",
+    "user_id": "user_118",
+    "timestamp": "2025-08-03T17:05:00Z",
+    "event_type": "checkout",
+    "cart_items": [
+      {
+        "product_id": "prod_525",
+        "quantity": 1,
+        "price": 18.50
+      }
+    ],
+    "total_amount": 18.50
+  }
+]
