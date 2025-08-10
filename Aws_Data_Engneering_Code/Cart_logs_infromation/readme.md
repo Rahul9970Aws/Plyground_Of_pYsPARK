@@ -1,17 +1,18 @@
 #FACT LOG INFOMATION
 
-| Column                                         | Description                                                                              | Example               |
-| ---------------------------------------------- | ---------------------------------------------------------------------------------------- | --------------------- |
-| **fact\_id** (PK)                              | Surrogate primary key for the fact table                                                 | `1`                   |
-| **user\_key** (FK → Dim\_User)                 | Foreign key linking to the user dimension                                                | `10`                  |
-| **product\_key** (FK → Dim\_Product, nullable) | Foreign key linking to the product dimension; nullable for non-product events            | `501`                 |
-| **event\_date**                                | Calendar date of the event (useful for partitioning and date-based joins)                | `2025-08-01`          |
-| **event\_timestamp**                           | Exact timestamp when the event occurred                                                  | `2025-08-01 09:30:00` |
-| **event\_type\_key** (FK → Dim\_EventType)     | Foreign key referencing the event type (e.g., `product_view`, `add_to_cart`, `checkout`) | `1`                   |
-| **quantity**                                   | Quantity involved in the event; null for non-transaction events like views               | `2`                   |
-| **unit\_price**                                | Price per unit at the time of the event                                                  | `75.20`               |
-| **total\_amount**                              | Calculated as `quantity × unit_price` for transactional events                           | `150.40`              |
-| **log\_id**                                    | Unique identifier from the source system for traceability                                | `log_005`             |
+| Column            | Description                                                               | Data Type     | Notes                                                                                   |
+| ----------------- | ------------------------------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------- |
+| `fact_event_id`   | Surrogate primary key                                                     | BIGINT / INT  | Auto-increment or generated unique ID                                                   |
+| `log_id`          | Unique identifier for the log/event                                       | VARCHAR       | From source log                                                                         |
+| `user_id`         | User identifier                                                           | VARCHAR       | Foreign key to `Dim_User` (optional)                                                    |
+| `event_date`      | Date of the event (extracted from timestamp)                              | DATE          | Useful for partitioning and reporting                                                   |
+| `event_timestamp` | Exact timestamp of the event                                              | TIMESTAMP     |                                                                                         |
+| `event_type`      | Type of event (`product_view`, `add_to_cart`, `checkout`)                 | VARCHAR       | FK to `Dim_EventType` if normalized                                                     |
+| `product_id`      | Product involved                                                          | VARCHAR       | Nullable for `checkout` (because multiple products per event)                           |
+| `category`        | Product category                                                          | VARCHAR       | Nullable                                                                                |
+| `quantity`        | Quantity involved                                                         | INT / DECIMAL | Nullable for `product_view`                                                             |
+| `unit_price`      | Price per unit                                                            | DECIMAL(10,2) | Nullable                                                                                |
+| `total_amount`    | Total amount for the line item (quantity × unit\_price)                   | DECIMAL(10,2) | Nullable                                                                                |
 
 
 
