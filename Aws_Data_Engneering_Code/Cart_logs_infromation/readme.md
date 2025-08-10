@@ -1,4 +1,4 @@
-##FACT LOG INFOMATION
+#FACT LOG INFOMATION
 
 | Column                                         | Description                                                                              | Example               |
 | ---------------------------------------------- | ---------------------------------------------------------------------------------------- | --------------------- |
@@ -15,7 +15,7 @@
 
 
 
-##FACT LOG EVENTS INFROMATION
+#FACT LOG EVENTS INFROMATION
 
 | Column           | Description                                                | Example    |
 | ---------------- | ---------------------------------------------------------- | ---------- |
