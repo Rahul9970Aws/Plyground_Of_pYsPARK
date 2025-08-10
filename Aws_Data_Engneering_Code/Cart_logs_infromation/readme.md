@@ -1,3 +1,5 @@
+FACT TABLE STRUCTURE
+
 | Column                                         | Description                                                                              | Example               |
 | ---------------------------------------------- | ---------------------------------------------------------------------------------------- | --------------------- |
 | **fact\_id** (PK)                              | Surrogate primary key for the fact table                                                 | `1`                   |
