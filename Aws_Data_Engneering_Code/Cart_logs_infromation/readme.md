@@ -1,4 +1,4 @@
-FACT TABLE STRUCTURE
+##FACT LOG INFOMATION
 
 | Column                                         | Description                                                                              | Example               |
 | ---------------------------------------------- | ---------------------------------------------------------------------------------------- | --------------------- |
@@ -15,7 +15,7 @@ FACT TABLE STRUCTURE
 
 
 
-
+##FACT LOG EVENTS INFROMATION
 
 | Column           | Description                                                | Example    |
 | ---------------- | ---------------------------------------------------------- | ---------- |
