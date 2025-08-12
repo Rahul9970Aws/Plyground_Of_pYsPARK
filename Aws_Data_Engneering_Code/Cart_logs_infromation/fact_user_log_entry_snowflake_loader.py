@@ -5,7 +5,7 @@ from pyspark.context import SparkContext
 from awsglue.context import GlueContext
 from awsglue.job import Job
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, to_date, countDistinct, sum, max
+from pyspark.sql.functions import col, to_date, countDistinct, sum, max ,avg
 
 # @params: [JOB_NAME] is a required parameter for Glue jobs
 args = getResolvedOptions(sys.argv, ['JOB_NAME'])
@@ -84,6 +84,7 @@ def combine_user_metrics_single_function(src_df, event_df):
     daily_checkout_summary = checkout_df.groupBy("user_id", "event_date").agg(
         sum("quantity").alias("total_quantity"),
         sum("total_amount").alias("total_amount"),
+        avg("unit_price").alias("unit_price"),
         max(col("EVENT_TYPE_KEY")).alias("checkout_event_key")
     )
     
@@ -93,7 +94,7 @@ def combine_user_metrics_single_function(src_df, event_df):
         how="left"
     )
     
-    filled_df = combined_df.na.fill(0, subset=["total_quantity", "total_amount"])
+    filled_df = combined_df.na.fill(0, subset=["total_quantity", "total_amount","unit_price"])
     
     final_df = filled_df.select(
         "user_id",
