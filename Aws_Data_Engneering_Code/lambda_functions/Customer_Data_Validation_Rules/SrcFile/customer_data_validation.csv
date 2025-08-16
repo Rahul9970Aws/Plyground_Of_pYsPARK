@@ -1,0 +1,31 @@
+customer_id,full_name,email,age,date_of_birth,phone_number,country
+1,John Doe,john.doe@example.com,29,1996-04-12,9876543210,USA
+2,Alice Smith,alice.smith@example,34,1990-07-25,12345,UK
+3,Michael123,michael123@example.com,45,1979-02-18,9999999999,Canada
+4,,susan.miller@example.com,28,1995-05-30,9876543210,India
+5,Robert Brown,robert.brown@example.com,-5,2028-01-01,abcdefghij,Australia
+6,Linda Johnson,linda.j@example.com,150,1870-03-20,8888888888,USA
+7,David Miller,david.miller@example.com,40,1983-11-11,9999999999,India
+8,Ana@na Brown,ana.brown@example.com,32,1991-08-19,7777777777,UK
+9,Chris Evans,chris.evans@example.com,29,1995-14-10,6666666666,USA
+10,John Doe,john.duplicate@example.com,29,1996-04-12,9876543210,USA
+11,Emily Davis,emily.davis@example.com,27,1998-06-14,9876543211,USA
+12,Mark Spencer,mark.spencer@example.com,35,1989-02-29,9876543212,UK
+13,Jane Smith,jane.smith@example.com,22,2002-10-10,1234567890,India
+14,Bob Stone,bob.stone@example,33,1991-03-04,1111111111,Canada
+15,Chris123,chris123@example.com,42,1982-07-15,2222222222,Australia
+16,Olivia Brown,olivia.brown@example.com,31,1993-05-18,3333333333,USA
+17,Mike O’Neil,mike.oneil@example.com,38,1986-02-28,4444444444,Ireland
+18,,tom.green@example.com,29,1995-07-07,5555555555,UK
+19,Laura White,laura.white@example.com,0,2025-01-01,6666666666,USA
+20,Peter Black,peter.black@example.com,75,1950-12-12,7777777777,India
+21,Sophia Johnson,sophia.j@example.com,28,1996-11-20,8888888888,USA
+22,Invalid Name123,inv.name@example.com,45,1979-09-09,9999999999,Australia
+23,Liam Williams,liam.williams@example.com,36,1988-10-15,1122334455,Canada
+24,Charlotte Brown,charlotte.b@example.com,29,1995-04-04,9988776655,UK
+25,Ethan Miller,ethan.miller@,26,1998-08-08,1234,India
+26,Grace Lee,grace.lee@example.com,130,1895-03-03,9999999999,USA
+27,Daniel King,daniel.king@example.com,39,1985-06-30,abcdefg123,Australia
+28,John Smith,john.smith@example.com,29,1995-05-05,9876543210,USA
+29,Invalid@@ User,invalid.user@@example.com,25,1999-02-02,7654321987,UK
+30,Sarah Brown,sarah.brown@example.com,28,1996-09-09,9876512345,India
