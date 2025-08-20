@@ -143,3 +143,229 @@ Unit tests for validators and S3/database functions using pytest and moto.
 Country Validation:
 
 Uncomment and use the validate_country() method if needed.
+----------------------------------------------------------------------------------------------------
+
+🔁 END-TO-END SYSTEM OVERVIEW
+
+This is a data validation pipeline for customer records that runs inside an AWS Lambda function. The pipeline:
+
+Ingests customer data from S3 (CSV file).
+
+Validates records using a custom validation class.
+
+Saves valid records to a PostgreSQL database.
+
+Uploads invalid records back to S3.
+
+Sends a summary report email using Amazon SES.
+
+Everything is modular, with each file handling a specific job.
+
+📁 MODULE 1: lambda_function.py — ORCHESTRATOR (MAIN)
+🔧 Purpose:
+
+Entry point for the entire pipeline
+
+Triggered as an AWS Lambda function
+
+Coordinates all modules (S3, validation, DB, email)
+
+🔍 Key Functions:
+✅ main(bucket_name, file_path, logger)
+
+Reads the CSV from S3
+
+Converts it to a pandas DataFrame
+
+Passes the DataFrame to DataValidator
+
+Establishes DB connection
+
+Inserts valid records to DB
+
+Returns both valid and invalid records
+
+✅ lambda_handler(event, context)
+
+AWS Lambda handler
+
+Defines S3 paths and filenames
+
+Calls main()
+
+Uploads invalid records to S3
+
+Triggers email notification
+
+🧩 Dependencies:
+
+generic_validator.py → for DataValidator
+
+generic_db_function.py → DB connection & insert
+
+aws_utility.py → Upload to S3 + send email
+
+📁 MODULE 2: generic_validator.py — DATA QUALITY CHECKER
+🔧 Purpose:
+
+Performs data quality checks on the customer records using pandas.
+
+✅ Class: DataValidator
+🔍 Validations Done:
+Field	Validation Logic
+customer_id	Must be an integer > 0
+full_name	Only alphabetic characters and spaces (^[A-Za-z ]+$)
+email	Matches common email format using regex
+age	Integer between 1 and 120
+date_of_birth	Must be a valid past date after year 1900
+phone_number	Must be exactly 10 digits
+not_null	Ensures all key fields are not null
+no_duplicates	No duplicates based on full_name + date_of_birth
+age_consistency	Validates that the given age matches the calculated age from DOB
+🔁 Method: run_all_validations()
+
+Applies each validation above
+
+Combines results into a DataFrame
+
+Filters and returns:
+
+valid_df (all validations passed)
+
+invalid_df (one or more failed)
+
+📁 MODULE 3: generic_db_function.py — DATABASE LAYER
+🔧 Purpose:
+
+Handles all interactions with a PostgreSQL database (using pg8000)
+
+🔍 Functions:
+✅ database_connection(logger)
+
+Fetches DB credentials from AWS SSM Parameter Store (/store/db-credentials/db-config)
+
+Uses boto3 to get a securely encrypted JSON config
+
+Establishes a PostgreSQL connection
+
+✅ insert_records(df, connection, logger)
+
+Loops through each row in valid_df
+
+Uses pg8000.native.Connection.run() to insert into dim_customer
+
+Uses ON CONFLICT (customer_id) DO NOTHING to avoid duplicates
+
+✅ shutdown_connection(logger)
+
+Closes the DB connection safely
+
+📁 MODULE 4: aws_utility.py — AWS HELPERS
+🔧 Purpose:
+
+Contains helper functions to work with S3 and SES email notifications
+
+✅ upload_df_to_s3(df, bucket_name, file_key, logger)
+
+Converts a DataFrame into a CSV (in memory using StringIO)
+
+Uploads it to the target path in Amazon S3
+
+✅ get_email_templete(...)
+
+Constructs a report email showing:
+
+Lambda function name
+
+Execution time
+
+Total / valid / invalid record counts
+
+Link to corrupt record file in S3
+
+Calls send_email_ses() to deliver it
+
+✅ send_email_ses(...)
+
+Sends email via Amazon SES
+
+Supports both text and HTML formats
+
+Requires verified sender (from_email)
+
+You can configure recipients (to_email)
+
+🧠 SYSTEM FLOW: STEP-BY-STEP EXPLAINED
+
+Here’s what happens when the Lambda function is triggered:
+
+✅ 1. File is read from S3
+
+File path: customer-data-validation-bkt/customer_data_validation.csv
+
+Data is converted to a pandas DataFrame
+
+✅ 2. Validations are applied
+
+Runs all 9 checks (including regex, type checks, cross-field logic)
+
+Results split into:
+
+valid_df
+
+invalid_df
+
+✅ 3. Valid records are inserted into PostgreSQL
+
+Only if customer_id is not already there (thanks to ON CONFLICT)
+
+✅ 4. Invalid records are uploaded to S3
+
+Stored at path:
+s3://data-engineering-generic-bkt/Curoupt_Records/Customer/<date>/Customer_invalid_records.csv
+
+✅ 5. Summary email is sent
+
+Email includes:
+
+Function name
+
+Total / valid / invalid counts
+
+S3 path to corrupt file
+
+Sent via SES to a fixed recipient
+
+🔐 Security Considerations
+Component	Secured By
+DB Credentials	AWS SSM Parameter Store (with encryption)
+File Access	S3 Bucket Policies / IAM Roles
+Email	Amazon SES (Verified email required)
+✅ SAMPLE EMAIL OUTPUT
+
+Subject: Lambda customer-validator - Data Validation Report
+
+Lambda Function: customer-validator
+Execution Time: 2025-08-20 12:10:34 UTC
+Total Records: 1000
+Valid Records: 950 (95%)
+Invalid Records: 50 (5%)
+Corrupt file stored at: s3://.../Customer_invalid_records.csv
+
+
+HTML version also includes a neat table with clickable S3 link.
+
+🧾 Summary Table of Responsibilities
+Module/File	Responsibility
+lambda_function.py	Orchestrates full ETL and validation pipeline
+generic_validator.py	Validates records using business rules
+generic_db_function.py	Connects to DB and inserts valid records
+aws_utility.py	Uploads invalid data to S3, sends email via SES
+🚀 Optional Enhancements You Can Add
+Feature	Description
+✅ Lambda Timeout & Memory Tuning	Ensure Lambda has enough time and memory to process large CSVs
+✅ Retry Policies	Add retries for SES, S3, and DB operations
+✅ DLQ (Dead Letter Queue)	Capture Lambda failures in SQS for future analysis
+✅ Country Validation	Currently commented out — enable for stricter checks
+✅ Error Logging to CloudWatch	Already using logger, but consider structured logs or pushing to centralized log service
+✅ Alerts via SNS	If > X% records are invalid, send critical alert via SNS
