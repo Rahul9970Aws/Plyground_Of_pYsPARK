@@ -1,0 +1,145 @@
+✅ 1. Main Script (Lambda Function Entrypoint)
+File: (main lambda file — let's call it lambda_function.py)
+Key Functions:
+
+main(bucket_name, file_path, logger)
+
+lambda_handler(event, context)
+
+Responsibilities:
+
+Triggered via AWS Lambda.
+
+Reads CSV from S3.
+
+Creates a pandas DataFrame.
+
+Calls DataValidator to validate records.
+
+Calls database_connection() and inserts valid records.
+
+Saves invalid records to S3.
+
+Calls get_email_templete() to send a summary email.
+
+Dependencies:
+
+DataValidator (from generic_validator.py)
+
+database_connection, insert_records, shutdown_connection (from generic_db_function.py)
+
+upload_df_to_s3, get_email_templete (from aws_utility.py)
+
+✅ 2. Data Validation Logic
+File: generic_validator.py
+Class: DataValidator
+Responsibilities:
+
+Takes a pandas DataFrame and validates:
+
+customer_id: Must be positive int
+
+full_name: Letters and spaces only
+
+email: Valid email pattern
+
+age: Between 1 and 120
+
+date_of_birth: Past date, year > 1900
+
+phone_number: 10-digit number
+
+Mandatory fields are not null
+
+Duplicate check on full_name + date_of_birth
+
+age matches date_of_birth
+
+Returns two DataFrames:
+
+valid_df (passes all checks)
+
+invalid_df (fails one or more)
+
+✅ 3. Database Operations
+File: generic_db_function.py
+Key Functions:
+
+database_connection(logger)
+
+Reads DB creds from AWS SSM Parameter Store
+
+Returns a secure DB connection (PostgreSQL via pg8000)
+
+insert_records(df, connection, logger)
+
+Inserts each row of valid data into dim_customer
+
+Ignores duplicates via ON CONFLICT
+
+shutdown_connection(logger)
+
+Gracefully closes DB connection
+
+✅ 4. AWS Utility Functions
+File: aws_utility.py
+Functions:
+
+upload_df_to_s3(df, bucket_name, file_key, logger)
+
+Uploads a pandas DataFrame as a CSV into S3.
+
+get_email_templete(lambda_name, s3_file_path, total_count, valid_count, invalid_count, logger)
+
+Prepares and sends an HTML+plain-text email report using Amazon SES.
+
+Includes:
+
+Function name
+
+Timestamp
+
+Record counts
+
+Link to the invalid records file on S3
+
+send_email_ses(...)
+
+Sends the actual email using Amazon SES.
+
+------------------------------------------------------------------------------------------
+
+1. Lambda is triggered → `lambda_handler` runs
+2. Reads CSV file from S3
+3. Converts to pandas DataFrame
+4. DataFrame passed to `DataValidator` → returns valid_df, invalid_df
+5. Valid records:
+     → `insert_records()` → written to PostgreSQL via `pg8000`
+6. Invalid records:
+     → `upload_df_to_s3()` → uploaded to S3 under /Curoupt_Records/...
+7. Summary Email:
+     → `get_email_templete()` → generates + sends email via SES
+8. DB connection closed
+9. Lambda returns JSON summary of results
+----------------------------------------------------------------------------------------------
+Suggestions for Improvement (Optional)
+
+Chunked DB Insertion:
+
+For large datasets, consider batch inserts using executemany() or bulk COPY operations.
+
+Validation Logging Enhancements:
+
+Add summary of what kinds of validations failed most (e.g. most common column failure).
+
+Retry Logic for AWS Services:
+
+Wrap S3/SES/SSM calls with retry decorators or exponential backoff.
+
+Add Tests:
+
+Unit tests for validators and S3/database functions using pytest and moto.
+
+Country Validation:
+
+Uncomment and use the validate_country() method if needed.
