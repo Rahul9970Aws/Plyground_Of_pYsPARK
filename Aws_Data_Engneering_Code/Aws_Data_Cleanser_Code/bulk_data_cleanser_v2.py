@@ -29,7 +29,7 @@ class DataCleanser():
                 "sfSchema": "RAW_DATA",
                 "sfWarehouse": "COMPUTE_WH",
                 "sfUser": "rahul",
-                "sfPassword": "Rahul123456789",
+                "sfPassword": "xyz",
                 "dbtable": "CUSTOMER_DETAILS"
             }
             logger.info("Snowflake connection established successfully")
