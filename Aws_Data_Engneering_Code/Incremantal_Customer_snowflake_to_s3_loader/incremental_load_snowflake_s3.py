@@ -31,7 +31,7 @@ def snowflake_dw_reader(logger, table_name):
         sfOptions = {
             "sfURL": "DZAKLEE-HQ11452.snowflakecomputing.com",
             "sfUser": "rahul",
-            "sfPassword": "Rahul123456789",
+            "sfPassword": "xyz",
             "sfDatabase": "UNIFIED_DATA_LAKE",
             "sfSchema": "DW",
             "sfWarehouse": "COMPUTE_WH",
